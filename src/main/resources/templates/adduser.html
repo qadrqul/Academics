@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>New Post</title>
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-sixteen.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<!-- Header -->
+<header th:replace="fragments::header" class="">
+</header>
+<div class="container-fluid">
+    <main class="tm-main">
+        <!-- Search form -->
+        <div class="send-message">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <h2>Add estate</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="contact-form">
+                            <form id="contact" method="post" th:action="@{/saveuser}" enctype="multipart/form-data" th:object="${newUser}">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <input class="form-control" th:field="*{id}" type="text" placeholder="id" required>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <textarea class="form-control" th:field="*{username}" type="text" placeholder="username" required></textarea>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <textarea class="form-control" th:field="*{password}" type="text" placeholder="password" required></textarea>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <textarea class="form-control" th:field="*{firstName}" type="text" placeholder="first name" required></textarea>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <textarea class="form-control" th:field="*{lastName}" type="text" placeholder="last name" required></textarea>
+                                    </div>
+                                    <div class="col-lg-12">
+
+                                        <button id="form-submit" class="tm-search-button" type="submit">Submit<i class="fas fa-ad tm-search-icon" aria-hidden="true"></i></button>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="row tm-row">
+
+        </footer>
+    </main>
+</div>
+
+</body>
+</html>
