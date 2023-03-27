@@ -52,12 +52,12 @@ public class MainController {
     }
 
 
-    @GetMapping("course/{id}")
+    @GetMapping("courses/{id}")
     public String blog(@PathVariable("id") Long id, Model model) {
         Course course = courseRepository.findById(id).orElseThrow();
         model.addAttribute(course);
 
-        return "post";
+        return "courses";
     }
 
     @GetMapping("addCourse")
@@ -113,32 +113,6 @@ public class MainController {
         return "redirect:/";
     }
 
-
-//    @GetMapping("updateCourse/delete/{id}")
-//    public String deleteCourse(@PathVariable int id) {
-//        Service.removeProductById(id);
-//        return "redirect:courses";
-//    }
-
-//    @GetMapping("/admin/product/update/{id}")
-//    public String updateProductGet(@PathVariable long id, Model model) {
-//        Product product = productService.getProductById(id).get();
-//        ProductDTO productDTO = new ProductDTO();
-//        productDTO.setId(product.getId());
-//        productDTO.setName(product.getName());
-//        productDTO.setCategoryId((product.getCategory().getId()));
-//        productDTO.setPrice(product.getPrice());
-//        productDTO.setWeight((product.getWeight()));
-//        productDTO.setDescription(product.getDescription());
-//        productDTO.setImageName(product.getImageName());
-//
-//        model.addAttribute("categories",categoryService.getAllCategory());
-//        model.addAttribute("productDTO",productDTO);
-//
-//
-//        return "productsAdd";
-//    }
-
     @GetMapping("admin")
     @ResponseBody
     public String adminPanel() {
@@ -156,7 +130,9 @@ public class MainController {
     }
 
     @GetMapping("register")
-    public String register() {
+    public String register(Model model) {
+        User newUser = new User();
+        model.addAttribute("newUser",newUser);
         return "register";
     }
 

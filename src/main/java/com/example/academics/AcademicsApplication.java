@@ -40,7 +40,7 @@ public class AcademicsApplication {
                 Role role_admin = new Role("ROLE_ADMIN");
                 Role role_user = new Role("ROLE_USER");
 
-                User admin = saveUser("Kadyrmamat", "Momunov", "123", role_admin);
+                User admin = saveUser("Kadyrmamat", "Momunov", "admin", role_admin);
 
                 User user = saveUser("Perizat", "Kurmanbaeva", "222", role_user);
 
