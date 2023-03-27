@@ -1,9 +1,6 @@
 package com.example.academics.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
 
@@ -14,7 +11,7 @@ public class Role {
     private String role;
 
     @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
+    private Set<Users> users;
 
     public Role() {
     }

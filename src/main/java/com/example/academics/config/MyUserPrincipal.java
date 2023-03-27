@@ -1,6 +1,6 @@
 package com.example.academics.config;
 
-import com.example.academics.model.User;
+import com.example.academics.model.Users;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,15 +10,15 @@ import java.util.stream.Collectors;
 
 public class MyUserPrincipal implements UserDetails {
 
-    private final User user;
+    private final Users users;
 
-    public MyUserPrincipal(User user) {
-        this.user = user;
+    public MyUserPrincipal(Users users) {
+        this.users = users;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return user.getRoles()
+        return users.getRoles()
                 .stream()
                 .map(role -> new SimpleGrantedAuthority(role.getRole()))
                 .collect(Collectors.toSet());
@@ -26,12 +26,12 @@ public class MyUserPrincipal implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return users.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return users.getUsername();
     }
 
     @Override

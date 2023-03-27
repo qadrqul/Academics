@@ -3,7 +3,7 @@ package com.example.academics.controller;
 
 import com.example.academics.model.Course;
 import com.example.academics.model.Role;
-import com.example.academics.model.User;
+import com.example.academics.model.Users;
 import com.example.academics.model.repo.CourseRepository;
 import com.example.academics.model.repo.UserRepository;
 import com.example.academics.services.UserService;
@@ -71,7 +71,7 @@ public class MainController {
     public String editPost(Model model,@PathVariable long id) {
         Course newCourse = courseRepository.findById(id).orElseThrow();
         model.addAttribute("newCourse",newCourse);
-        return "addCourse";
+        return "editCourse";
     }
     @GetMapping("deleteCourse/{id}")
     public String deletePost(@PathVariable long id) {
@@ -97,19 +97,19 @@ public class MainController {
 
     @GetMapping("adduser")
     public String createUser(Model model) {
-        User newUser = new User();
-        model.addAttribute("newUser",newUser);
+        Users newUsers = new Users();
+        model.addAttribute("newUser", newUsers);
         return "adduser";
     }
 
     @PostMapping(value = "saveuser", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String saveUser(
-            @ModelAttribute User user,
+            @ModelAttribute Users users,
             Principal principal
     ) {
         Role role_user = new Role("ROLE_USER");
-        user.setRoles(Set.of(role_user));
-        userService.saveUser(user);
+        users.setRoles(Set.of(role_user));
+        userService.saveUser(users);
         return "redirect:/";
     }
 
@@ -131,8 +131,8 @@ public class MainController {
 
     @GetMapping("register")
     public String register(Model model) {
-        User newUser = new User();
-        model.addAttribute("newUser",newUser);
+        Users newUsers = new Users();
+        model.addAttribute("newUser", newUsers);
         return "register";
     }
 

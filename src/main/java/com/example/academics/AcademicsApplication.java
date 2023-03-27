@@ -2,7 +2,7 @@ package com.example.academics;
 
 import com.example.academics.model.Course;
 import com.example.academics.model.Role;
-import com.example.academics.model.User;
+import com.example.academics.model.Users;
 import com.example.academics.model.repo.CourseRepository;
 import com.example.academics.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,9 +40,9 @@ public class AcademicsApplication {
                 Role role_admin = new Role("ROLE_ADMIN");
                 Role role_user = new Role("ROLE_USER");
 
-                User admin = saveUser("Kadyrmamat", "Momunov", "admin", role_admin);
+                Users admin = saveUser("Kadyrmamat", "Momunov", "admin", role_admin);
 
-                User user = saveUser("Perizat", "Kurmanbaeva", "222", role_user);
+                Users users = saveUser("Perizat", "Kurmanbaeva", "222", role_user);
 
 
                 File img01 = new File("./src/main/resources/static/images/course_1.jpg");
@@ -69,15 +69,15 @@ public class AcademicsApplication {
                 saveCourse(title4,description,price,img04);
             }
 
-            private User saveUser(String firstname, String lastname, String username_password, Role role_user) throws IOException {
-                    User user = new User().setFirstName(firstname)
+            private Users saveUser(String firstname, String lastname, String username_password, Role role_user) throws IOException {
+                    Users users = new Users().setFirstName(firstname)
                             .setLastName(lastname)
                             .setUsername(username_password)
                             .setPassword(username_password)
                             .setRoles(Set.of(role_user));
 
-                    userService.saveUser(user);
-                    return user;
+                    userService.saveUser(users);
+                    return users;
 
             }
 

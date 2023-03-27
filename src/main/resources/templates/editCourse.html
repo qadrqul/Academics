@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Course</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+    <link href="css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- Header -->
+</header>
+<div class="container-fluid">
+    <main class="tm-main">
+        <!-- Search form -->
+        <div class="send-message">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <h2>Edit Course</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="contact-form">
+                            <form id="contact" method="post" th:action="@{/savecourse}" enctype="multipart/form-data" th:object="${newCourse}">
+                                <div class="row">
+                                    <input type="hidden" th:field="*{id}">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <input class="form-control" th:field="*{title}" type="text" placeholder="Title" required>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <input type="file" name="photofile" id="photo" required>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <textarea class="form-control" th:field="*{description}" type="text" placeholder="Course description" required></textarea>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <textarea class="form-control" th:field="*{price}" type="text" placeholder="course price" required></textarea>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <textarea class="form-control" th:field="*{category}" type="text" placeholder="course category" required></textarea>
+                                    </div>
+                                    <div class="col-lg-12">
+
+                                        <button id="form-submit" class="tm-search-button" type="submit">Submit<i class="fas fa-ad tm-search-icon" aria-hidden="true"></i></button>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="row tm-row">
+
+        </footer>
+    </main>
+</div>
+
+</body>
+</html>

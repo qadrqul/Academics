@@ -1,7 +1,7 @@
 package com.example.academics.services;
 
 import com.example.academics.config.MyUserPrincipal;
-import com.example.academics.model.User;
+import com.example.academics.model.Users;
 import com.example.academics.model.repo.RoleRepository;
 import com.example.academics.model.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -29,21 +27,21 @@ public class UserService implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
+        Users users = userRepository.findByUsername(username);
+        if (users == null) {
             throw new UsernameNotFoundException(username);
         }
-        return new MyUserPrincipal(user);
+        return new MyUserPrincipal(users);
     }
 
     @Transactional
-    public User getUserByUsername(String username) {
+    public Users getUserByUsername(String username) {
         return userRepository.findByUsername(username);
     }
-    public void saveUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        roleRepository.saveAll(user.getRoles());
-        userRepository.save(user);
+    public void saveUser(Users users) {
+        users.setPassword(passwordEncoder.encode(users.getPassword()));
+        roleRepository.saveAll(users.getRoles());
+        userRepository.save(users);
     }
 
     @Bean

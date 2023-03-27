@@ -5,10 +5,9 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "academic_user")
-public class User {
+public class Users {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String firstName;
     private String lastName;
@@ -28,7 +27,7 @@ public class User {
         return id;
     }
 
-    public User setId(Long id) {
+    public Users setId(Long id) {
         this.id = id;
         return this;
     }
@@ -37,7 +36,7 @@ public class User {
         return username;
     }
 
-    public User setUsername(String username) {
+    public Users setUsername(String username) {
         this.username = username;
         return this;
     }
@@ -46,7 +45,7 @@ public class User {
         return firstName;
     }
 
-    public User setFirstName(String firstName) {
+    public Users setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
@@ -55,7 +54,7 @@ public class User {
         return lastName;
     }
 
-    public User setLastName(String lastName) {
+    public Users setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
@@ -64,7 +63,7 @@ public class User {
         return photo;
     }
 
-    public User setPhoto(byte[] photo) {
+    public Users setPhoto(byte[] photo) {
         this.photo = photo;
         return this;
     }
@@ -73,7 +72,7 @@ public class User {
         return createdCourses;
     }
 
-    public User setCreatedBlogs(Set<Course> createdBlogs) {
+    public Users setCreatedBlogs(Set<Course> createdBlogs) {
         this.createdCourses = createdCourses;
         return this;
     }
@@ -82,7 +81,7 @@ public class User {
         return roles;
     }
 
-    public User setRoles(Set<Role> roles) {
+    public Users setRoles(Set<Role> roles) {
         this.roles = roles;
         return this;
     }
@@ -91,8 +90,8 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id);
+        Users users = (Users) o;
+        return Objects.equals(id, users.id);
     }
 
     @Override
@@ -114,7 +113,7 @@ public class User {
         return password;
     }
 
-    public User setPassword(String password) {
+    public Users setPassword(String password) {
         this.password = password;
         return this;
     }

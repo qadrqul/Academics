@@ -9,7 +9,7 @@ import java.util.Objects;
 @Entity
 public class Course {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(length = 60)
     private String title;
@@ -45,7 +45,7 @@ public class Course {
     private byte[] photo;
     private LocalDateTime createdDate;
     @ManyToOne
-    private User createdBy;
+    private Users createdBy;
 
     public Long getId() {
         return id;
@@ -92,11 +92,11 @@ public class Course {
         return this;
     }
 
-    public User getCreatedBy() {
+    public Users getCreatedBy() {
         return createdBy;
     }
 
-    public Course setCreatedBy(User createdBy) {
+    public Course setCreatedBy(Users createdBy) {
         this.createdBy = createdBy;
         return this;
     }

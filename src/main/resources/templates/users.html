@@ -74,13 +74,13 @@
             <div class="row">
 
 
-                <article th:each="user:${users}" class="col-lg-4 col-md-6 mb-4">
+                <article th:each="users:${users}" class="col-lg-4 col-md-6 mb-4">
                     <div class="course-1-item">
                         <figure class="thumnail">
-                            <div th:text="${user.id}" class="id"></div>
-                            <div th:text="${user.username}" class="id"></div>
-                            <div th:text="${user.firstName}"class="firstName"></div>
-                            <div th:text="${user.lastName}"class="firstName"></div>
+                            <div th:text="${users.id}" class="id"></div>
+                            <div th:text="${users.username}" class="id"></div>
+                            <div th:text="${users.firstName}"class="firstName"></div>
+                            <div th:text="${users.lastName}"class="firstName"></div>
 
                         </figure>
                     </div>
