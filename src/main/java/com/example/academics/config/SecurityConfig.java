@@ -12,15 +12,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers(new String[]{"/createpost","/savepost"}).authenticated()
-                .antMatchers("/admin").hasAuthority("ROLE_ADMIN") // .hasRole(ADMIN) // hasRole will automatically add prefix ROLE_
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                /*.loginPage("/mylogin") // should set up page on controller
-                .usernameParameter("username") // on html <input name="username" ...
-                .passwordParameter("password") // on html <input name="password" ...
-                .successForwardUrl("/createpost")*/ // url to go on successful login
                 .permitAll()
                 .and()
                 .logout()
