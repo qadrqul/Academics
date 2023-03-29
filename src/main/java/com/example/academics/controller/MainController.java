@@ -36,18 +36,24 @@ public class MainController {
             produces = MediaType.IMAGE_JPEG_VALUE,
             path = "course-img/{courseId}")
     @ResponseBody
-    public byte[] getImage(@PathVariable("courseId") Long blogId,HttpServletResponse response) {
+    public byte[] getImage(@PathVariable("courseId") Long blogId, HttpServletResponse response) {
         return courseRepository.findById(blogId).orElseThrow().getPhoto();
+    }
+
+    @GetMapping("/")
+    public String index() {
+        return "index";
     }
 
     @GetMapping("courses")
     public String home(Model model) {
-        model.addAttribute("courses",courseRepository.findAll());
+        model.addAttribute("courses", courseRepository.findAll());
         return "courses";
     }
+
     @GetMapping("users")
     public String user(Model model) {
-        model.addAttribute("users",userRepository.findAll());
+        model.addAttribute("users", userRepository.findAll());
         return "users";
     }
 
@@ -63,16 +69,17 @@ public class MainController {
     @GetMapping("addCourse")
     public String createPost(Model model) {
         Course newCourse = new Course().setCreatedDate(LocalDateTime.now());
-        model.addAttribute("newCourse",newCourse);
+        model.addAttribute("newCourse", newCourse);
         return "addCourse";
     }
 
     @GetMapping("editCourse/{id}")
-    public String editPost(Model model,@PathVariable long id) {
+    public String editPost(Model model, @PathVariable long id) {
         Course newCourse = courseRepository.findById(id).orElseThrow();
-        model.addAttribute("newCourse",newCourse);
+        model.addAttribute("newCourse", newCourse);
         return "editCourse";
     }
+
     @GetMapping("deleteCourse/{id}")
     public String deletePost(@PathVariable long id) {
         courseRepository.deleteById(id);
